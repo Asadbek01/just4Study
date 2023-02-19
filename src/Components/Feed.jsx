@@ -5,7 +5,7 @@ import { fetchFromAPI } from "./utils/fetchApis";
 import { Videos, Sidebar } from "./";
 
 const Feed = () => {
-  const [selectedCategory, setSelectedCategory] = useState("New");
+  const [selectedCategory, setSelectedCategory] = useState("Islom Amri");
   const [videos, setVideos] = useState(null);
 
   useEffect(() => {
@@ -13,6 +13,7 @@ const Feed = () => {
 
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)
       .then((data) => setVideos(data.items))
+      console.log(videos);
     }, [selectedCategory]);
 
   return (

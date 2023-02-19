@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Paper, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import Loader from './Loader';
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -15,6 +16,7 @@ const SearchBar = () => {
 
       setSearchTerm('');
     }
+    if(!searchTerm) return <Loader />;
   };
 
   return (
@@ -35,7 +37,7 @@ const SearchBar = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <IconButton type='submit' sx={{ p: '10px', color: 'red' }} aria-label='search'>
+      <IconButton type='submit' sx={{ p: '10px', color: '#008000' }} aria-label='search'>
         <SearchIcon />
       </IconButton>
     </Paper>
