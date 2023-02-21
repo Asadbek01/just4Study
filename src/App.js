@@ -1,5 +1,5 @@
 
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Outlet } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { Navbar } from './Components';
 import { AppRoutes } from './routes';
@@ -10,6 +10,7 @@ function App() {
     <Box sx={{ flexGrow: 1, backgroundColor: '#000' }}>
       <Navbar />
       <AppRoutes/>
+      <Outlet/>
     </Box>
     </BrowserRouter>
   );
