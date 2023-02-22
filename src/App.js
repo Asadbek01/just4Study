@@ -1,22 +1,32 @@
 
-import {BrowserRouter, Routes, Route, Switch} from 'react-router-dom';
-import {Box, Button, Container, Grid, Paper, Typography} from '@mui/material';
-import { Navbar, Feed, VideoDetail, SearchFeed, ChannelDetail } from './Components';
+import { BrowserRouter, Outlet } from 'react-router-dom';
+import { createTheme, ThemeProvider } from '@mui/material';
+import { Box } from '@mui/material';
+import { Navbar } from './Components';
+import { AppRoutes } from './routes';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1DB954'
+    },
+    background: {
+      main: '#191414',
+    },
+  }
+})
 
 function App() {
   return (
-    <BrowserRouter>
-    <Box sx={{ flexGrow: 1, backgroundColor: '#000' }}>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Feed />} />
-        <Route path="/video/:id" element={<VideoDetail />} />
-        <Route path="/channel/:id" element={<ChannelDetail />} />
-        <Route path="/search/:searchTerm" element={<SearchFeed />} />
-        
-      </Routes>
-    </Box>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+      <Box bgcolor="background.main" sx={{ flexGrow: 1 }}>
+        <Navbar />
+        <AppRoutes/>
+        <Outlet/>
+      </Box>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 
